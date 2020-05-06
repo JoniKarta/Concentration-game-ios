@@ -46,8 +46,8 @@
                                     <constraint firstItem="Wig-Ve-x1V" firstAttribute="centerY" secondItem="fyM-YW-Iwg" secondAttribute="centerY" id="MI4-Ej-J0h"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-eH-P8K" userLabel="Game Collection View">
-                                <rect key="frame" x="0.0" y="74" width="414" height="545.33333333333337"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-eH-P8K" userLabel="Game Collection View">
+                                <rect key="frame" x="-8" y="74" width="414" height="545.33333333333337"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5no-lA-tFz">
                                     <size key="itemSize" width="158" height="224"/>
@@ -120,6 +120,6 @@
     <resources>
         <image name="back" width="128" height="128"/>
         <image name="card10" width="128" height="128"/>
-        <image name="gamebackground" width="444.66665649414062" height="414.33334350585938"/>
+        <image name="gamebackground" width="128.33332824707031" height="180"/>
     </resources>
 </document>
