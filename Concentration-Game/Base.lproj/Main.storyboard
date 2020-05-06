@@ -118,8 +118,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="158" height="224"/>
-        <image name="card10" width="158" height="224"/>
+        <image name="back" width="128" height="128"/>
+        <image name="card10" width="128" height="128"/>
         <image name="gamebackground" width="444.66665649414062" height="414.33334350585938"/>
     </resources>
 </document>

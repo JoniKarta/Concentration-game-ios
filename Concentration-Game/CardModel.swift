@@ -19,7 +19,7 @@ class CardModel {
 
         for _ in 1...8{
             
-            let randomNumber = arc4random_uniform(13) + 1
+            let randomNumber = arc4random_uniform(12) + 1
             
             let cardOne = Card(cardName : "card\(randomNumber)")
             
