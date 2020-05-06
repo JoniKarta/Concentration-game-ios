@@ -21,7 +21,30 @@
                             </imageView>
                             <view alpha="0.45000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fyM-YW-Iwg" userLabel="Bottom view">
                                 <rect key="frame" x="0.0" y="627.33333333333337" width="414" height="268.66666666666663"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-Ve-x1V">
+                                        <rect key="frame" x="178.33333333333334" y="86.666666666666629" width="57.666666666666657" height="95"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS9-Oi-Qhf">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.666666666666664" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO0-ae-02Z">
+                                                <rect key="frame" x="3.3333333333333144" y="46" width="50.666666666666664" height="49"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <constraints>
+                                    <constraint firstItem="Wig-Ve-x1V" firstAttribute="centerX" secondItem="fyM-YW-Iwg" secondAttribute="centerX" id="FBg-HB-i0O"/>
+                                    <constraint firstItem="Wig-Ve-x1V" firstAttribute="centerY" secondItem="fyM-YW-Iwg" secondAttribute="centerY" id="MI4-Ej-J0h"/>
+                                </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-eH-P8K" userLabel="Game Collection View">
                                 <rect key="frame" x="0.0" y="74" width="414" height="545.33333333333337"/>
@@ -85,12 +108,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="game_CV_cardscollection" destination="Rjp-eH-P8K" id="LGX-yF-dGo"/>
+                        <outlet property="game_COLVIEW_cardsCollection" destination="Rjp-eH-P8K" id="LGX-yF-dGo"/>
+                        <outlet property="game_LBL_moves" destination="uO0-ae-02Z" id="iED-ky-PiU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204" y="-80"/>
+            <point key="canvasLocation" x="67" y="-173"/>
         </scene>
     </scenes>
     <resources>
