@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Concentration-Game
 //
-//  Created by user165579 on 5/5/20.
+//  Created by Jonathan Karta on 5/5/20.
 //  Copyright © 2020 user165579. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate
+
 {
     @IBOutlet weak var game_LBL_moves: UILabel!
     @IBOutlet weak var game_COLVIEW_cardsCollection: UICollectionView!
@@ -53,7 +54,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             if firstCardFlipped == nil{ // Which means it's the first card the player flip
                 firstCardFlipped = indexPath
             }else{
-                // it's the second card
+                // It's the second card
                 hasMatch(firstCardIndex: firstCardFlipped!, secondCardIndex: indexPath)
             }
         }else {

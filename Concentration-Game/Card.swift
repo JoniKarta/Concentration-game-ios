@@ -11,11 +11,12 @@ import Foundation
 
 class Card {
      
-    var cardName = ""
-    var isFlipped = false
-    var isMatched = false
+    var cardName : String = ""
+    var isFlipped : Bool = false
+    var isMatched : Bool = false
     
     init(cardName : String){
         self.cardName = cardName
     }
+    
 }

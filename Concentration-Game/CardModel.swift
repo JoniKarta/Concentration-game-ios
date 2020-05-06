@@ -2,8 +2,8 @@
 //  CardModel.swift
 //  Concentration-Game
 //
-//  Created by user165579 on 5/5/20.
-//  Copyright © 2020 user165579. All rights reserved.
+//  Created by Jonathan Karta on 5/5/20.
+//  Copyright © 2020 Jonathan Karta. All rights reserved.
 //
 
 import Foundation
@@ -11,25 +11,21 @@ import Foundation
 
 class CardModel {
     
-    
+    // This function generated random and unique pairs of cards
     func createCards() -> [Card]{
-        // Declaration
-
         var cardsArray = [Card]()
-
-        for _ in 1...8{
-            
-            let randomNumber = arc4random_uniform(12) + 1
-            
-            let cardOne = Card(cardName : "card\(randomNumber)")
-            
-            cardsArray.append(cardOne)
-            
-            let cardTwo = Card(cardName : "card\(randomNumber)")
-            
-            cardsArray.append(cardTwo)
-            
+        var trackGeneratedNumbers : [UInt32] = [UInt32]()
+        while trackGeneratedNumbers.count < 8 {
+            let cardNumber = arc4random_uniform(12) + 1
+            if trackGeneratedNumbers.contains(cardNumber) == false {
+                trackGeneratedNumbers.append(cardNumber)
+                let cardOne = Card(cardName : "card\(cardNumber)")
+                let cardTwo = Card(cardName : "card\(cardNumber)")
+                cardsArray.append(cardOne)
+                cardsArray.append(cardTwo)
+                print(cardNumber)
+            }
         }
-       return cardsArray
+        return cardsArray.shuffled()
     }
 }
