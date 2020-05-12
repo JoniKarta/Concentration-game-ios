@@ -1,4 +1,6 @@
-![Jonathan karta Banner](Logo/Slide1.JPG)
+<div>
+      <img src="Logo/Slide1.JPG" alt="Game image" style="height:200px" >      
+</div>
 
 # Concentration Game
 
