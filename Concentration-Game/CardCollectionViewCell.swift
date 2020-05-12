@@ -32,12 +32,12 @@ class CardCollectionViewCell: UICollectionViewCell {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0){
             UIView.transition(from: self.game_IMG_frontcard ,
                               to: self.game_IMG_backcard,
-                duration: 0.3,
-                options: [.transitionFlipFromRight,.showHideTransitionViews],
-                completion: nil)
+                              duration: 0.3,
+                              options: [.transitionFlipFromRight,.showHideTransitionViews],
+                              completion: nil)
             
-            }
         }
+    }
     
     
     func remove() {

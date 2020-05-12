@@ -15,7 +15,7 @@
 		C042ECFF24613ED00041EB88 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C042ECFD24613ED00041EB88 /* LaunchScreen.storyboard */; };
 		C042ED0A24613ED00041EB88 /* Concentration_GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED0924613ED00041EB88 /* Concentration_GameTests.swift */; };
 		C042ED1524613ED00041EB88 /* Concentration_GameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED1424613ED00041EB88 /* Concentration_GameUITests.swift */; };
-		C042ED23246153AD0041EB88 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED22246153AD0041EB88 /* CardModel.swift */; };
+		C042ED23246153AD0041EB88 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED22246153AD0041EB88 /* GameModel.swift */; };
 		C042ED25246154D00041EB88 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED24246154D00041EB88 /* Card.swift */; };
 		C042ED29246160670041EB88 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED28246160670041EB88 /* CardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +52,7 @@
 		C042ED1024613ED00041EB88 /* Concentration-GameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Concentration-GameUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C042ED1424613ED00041EB88 /* Concentration_GameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Concentration_GameUITests.swift; sourceTree = "<group>"; };
 		C042ED1624613ED00041EB88 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C042ED22246153AD0041EB88 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
+		C042ED22246153AD0041EB88 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		C042ED24246154D00041EB88 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C042ED28246160670041EB88 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
 /* End PBXFileReference section */
@@ -109,7 +109,7 @@
 				C042ECF424613ECE0041EB88 /* SceneDelegate.swift */,
 				C042ECF624613ECE0041EB88 /* ViewController.swift */,
 				C042ED28246160670041EB88 /* CardCollectionViewCell.swift */,
-				C042ED22246153AD0041EB88 /* CardModel.swift */,
+				C042ED22246153AD0041EB88 /* GameModel.swift */,
 				C042ED24246154D00041EB88 /* Card.swift */,
 				C042ECF824613ECE0041EB88 /* Main.storyboard */,
 				C042ECFB24613ED00041EB88 /* Assets.xcassets */,
@@ -269,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C042ECF724613ECE0041EB88 /* ViewController.swift in Sources */,
-				C042ED23246153AD0041EB88 /* CardModel.swift in Sources */,
+				C042ED23246153AD0041EB88 /* GameModel.swift in Sources */,
 				C042ED25246154D00041EB88 /* Card.swift in Sources */,
 				C042ECF324613ECE0041EB88 /* AppDelegate.swift in Sources */,
 				C042ED29246160670041EB88 /* CardCollectionViewCell.swift in Sources */,

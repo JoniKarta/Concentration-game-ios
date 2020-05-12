@@ -9,7 +9,7 @@
 import Foundation
 
 
-class CardModel {
+class GameModel {
     private var cardsArray = [Card]()
     private var numberOfPairCards : Int = 8
     
@@ -30,11 +30,11 @@ class CardModel {
     }
     
     func checkGameBoard()-> Bool{
-           for card in cardsArray {
-               if card.isMatched == false {
-                   return false
-               }
-           }
-           return true
-       }
+        for card in cardsArray {
+            if card.isMatched == false {
+                return false
+            }
+        }
+        return true
+    }
 }

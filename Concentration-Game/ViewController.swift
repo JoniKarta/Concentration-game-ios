@@ -10,18 +10,17 @@ import UIKit
 
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate
-
+    
 {
     @IBOutlet weak var game_LBL_moves: UILabel!
     @IBOutlet weak var game_COLVIEW_cardsCollection: UICollectionView!
     @IBOutlet weak var game_LBL_timer: UILabel!
     
     private var cards : [Card] = [Card]()
-    private var model = CardModel()
+    private var gameModel = GameModel()
     private var countMoves : Int = 0
-    private var firstCardIndexPath : IndexPath?
-    private var secondCardIndexPath : IndexPath?
-    private var firstCardFlipped : Card?
+    private var firstCardFlipped : IndexPath?
+    private var secondCardFlipped : IndexPath?
     private var gameTimer : Timer?
     private var milliseconds : Float = 50 * 1000
     
@@ -30,14 +29,14 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         configureCardsLayout()
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
-        cards = model.createCards()
+        cards = gameModel.createCards()
         gameTimer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     // MARK: - UICollectionView Protocol Methods
-   
-     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return cards.count
-       }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cards.count
+    }
     
     func collectionView(_ collectionView:UICollectionView,cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardView", for: indexPath) as! CardCollectionViewCell
@@ -46,32 +45,31 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         return cell
     }
     
-          
-                
-     
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        if firstCardIndexPath == nil{
-            firstCardIndexPath = indexPath
-            firstCardFlipped = cards[indexPath.row]
-            firstCardFlipped?.isFlipped = true
+        if firstCardFlipped == nil{
             cell.flip()
-        }else if firstCardIndexPath != nil
-            && secondCardIndexPath == nil{
+            firstCardFlipped = indexPath
+            cards[self.firstCardFlipped!.row].isFlipped = true
             
-            secondCardIndexPath = indexPath
+        }else if cards[indexPath.row].isFlipped == false // it's not the same card
+            && secondCardFlipped == nil{ // second card not get flippled
             cell.flip()
-            hasMatch(firstCardIndex: firstCardIndexPath!, secondCardIndex: secondCardIndexPath!)
-                           if model.checkGameBoard() == true{
-                               gameTimer?.invalidate()
-                               viewAlertDialog(customMessage: "You have won the game!")
-                           }
+            secondCardFlipped = indexPath
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.9){
+                self.firstCardFlipped = nil
+                self.secondCardFlipped = nil
+            }
+            hasMatch(firstCardIndex: self.firstCardFlipped!, secondCardIndex: self.secondCardFlipped!)
+            if gameModel.checkGameBoard() == true{
+                gameTimer?.invalidate()
+                viewAlertDialog(customMessage: "You have won the game!")
+            }
             
         }
-       
     }
-    
     
     
     // MARK: - Configuaration of main layout
@@ -80,8 +78,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         let layout = game_COLVIEW_cardsCollection.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
     }
-
-
+    
+    
     // MARK: - Game logic
     
     func hasMatch(firstCardIndex : IndexPath, secondCardIndex : IndexPath) {
@@ -103,16 +101,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardTwo.isFlipped = false
             cardOneCellView.flipBack()
             cardTwoCellView.flipBack()
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.3){
-                self.firstCardIndexPath = nil
-                self.secondCardIndexPath = nil
-                       
-                       }
         }
-       
-        
-        
     }
     
     func updateMove() {
