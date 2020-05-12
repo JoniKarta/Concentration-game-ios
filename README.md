@@ -1,5 +1,5 @@
 <div>
-      <img src="Logo/Slide1.JPG" alt="Game Logo" height="42" >      
+      <img src="Logo/Slide1.JPG" alt="Game Logo" height="200" >      
 </div>
 
 # Concentration Game
