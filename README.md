@@ -1,4 +1,4 @@
-![Jonathan karta Banner](Logo/MyLogo.jpg)
+![Jonathan karta Banner](Logo/Slide1.jpg)
 
 # Concentration Game
 
