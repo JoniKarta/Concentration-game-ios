@@ -35,8 +35,10 @@ class CardCollectionViewCell: UICollectionViewCell {
                 duration: 0.3,
                 options: [.transitionFlipFromRight,.showHideTransitionViews],
                 completion: nil)
+            
+            }
         }
-    }
+    
     
     func remove() {
         self.game_IMG_backcard.alpha = 0
@@ -47,4 +49,6 @@ class CardCollectionViewCell: UICollectionViewCell {
                         self.game_IMG_frontcard.alpha = 0
         }, completion: nil)
     }
+    
+    
 }

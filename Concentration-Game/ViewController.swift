@@ -19,7 +19,9 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     private var cards : [Card] = [Card]()
     private var model = CardModel()
     private var countMoves : Int = 0
-    private var firstCardFlipped : IndexPath?  
+    private var firstCardIndexPath : IndexPath?
+    private var secondCardIndexPath : IndexPath?
+    private var firstCardFlipped : Card?
     private var gameTimer : Timer?
     private var milliseconds : Float = 50 * 1000
     
@@ -50,27 +52,24 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
-        cell.flip()
-        let selectedCard = cards[indexPath.row]
-
-        if selectedCard.isFlipped == false {
+        if firstCardIndexPath == nil{
+            firstCardIndexPath = indexPath
+            firstCardFlipped = cards[indexPath.row]
+            firstCardFlipped?.isFlipped = true
             cell.flip()
-            selectedCard.isFlipped = true
-
-            if firstCardFlipped == nil{ // Which means it's the first card the player flip
-                firstCardFlipped = indexPath
-
-            }else{
-                // It's the second card
-                hasMatch(firstCardIndex: firstCardFlipped!, secondCardIndex: indexPath)
-                if model.checkGameBoard() == true{
-                    gameTimer?.invalidate()
-                    viewAlertDialog(customMessage: "You have won the game!")
-                }
-            }
-        }else {
-            cell.flipBack()
+        }else if firstCardIndexPath != nil
+            && secondCardIndexPath == nil{
+            
+            secondCardIndexPath = indexPath
+            cell.flip()
+            hasMatch(firstCardIndex: firstCardIndexPath!, secondCardIndex: secondCardIndexPath!)
+                           if model.checkGameBoard() == true{
+                               gameTimer?.invalidate()
+                               viewAlertDialog(customMessage: "You have won the game!")
+                           }
+            
         }
+       
     }
     
     
@@ -88,37 +87,31 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     func hasMatch(firstCardIndex : IndexPath, secondCardIndex : IndexPath) {
         // Update number of moves in the game
         updateMove()
-        
-        // Gets cards view
-        let cardOneCellView = game_COLVIEW_cardsCollection.cellForItem(at: firstCardIndex) as? CardCollectionViewCell
-        let cardTwoCellView = game_COLVIEW_cardsCollection.cellForItem(at: secondCardIndex) as? CardCollectionViewCell
-
-        // Get the cards entity
+        let cardOneCellView = game_COLVIEW_cardsCollection.cellForItem(at: firstCardIndex) as! CardCollectionViewCell
+        let cardTwoCellView = game_COLVIEW_cardsCollection.cellForItem(at: secondCardIndex) as! CardCollectionViewCell
         let cardOne : Card = self.cards[firstCardIndex.row]
         let cardTwo : Card = self.cards[secondCardIndex.row]
         
         if cardOne.cardName == cardTwo.cardName {
-            
-            // Change the state of the cards
             cardOne.isMatched = true
             cardTwo.isMatched = true
-            
-            // Remove the cards from the view
-            cardOneCellView?.remove()
-            cardTwoCellView?.remove()
+            cardOneCellView.remove()
+            cardTwoCellView.remove()
             
         }else{
-        
-            // Change the entity's state
             cardOne.isFlipped = false
             cardTwo.isFlipped = false
+            cardOneCellView.flipBack()
+            cardTwoCellView.flipBack()
             
-            // Flip the cards back
-            cardOneCellView?.flipBack()
-            cardTwoCellView?.flipBack()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.3){
+                self.firstCardIndexPath = nil
+                self.secondCardIndexPath = nil
+                       
+                       }
         }
-        // Track if the first cards has flipped
-        self.firstCardFlipped = nil
+       
+        
         
     }
     
