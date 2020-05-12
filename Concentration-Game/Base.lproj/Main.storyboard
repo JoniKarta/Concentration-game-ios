@@ -23,17 +23,23 @@
                                 <rect key="frame" x="0.0" y="627.33333333333337" width="414" height="268.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Wig-Ve-x1V">
-                                        <rect key="frame" x="178.33333333333334" y="86.666666666666629" width="57.666666666666657" height="95"/>
+                                        <rect key="frame" x="127" y="61.999999999999986" width="160" height="144.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Moves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fS9-Oi-Qhf">
-                                                <rect key="frame" x="0.0" y="0.0" width="57.666666666666664" height="24"/>
+                                                <rect key="frame" x="51.333333333333343" y="0.0" width="57.666666666666657" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uO0-ae-02Z">
-                                                <rect key="frame" x="3.3333333333333144" y="46" width="50.666666666666664" height="49"/>
+                                                <rect key="frame" x="54.666666666666657" y="46" width="50.666666666666657" height="49"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Remaining" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="reI-uj-s17">
+                                                <rect key="frame" x="0.0" y="117.00000000000001" width="160" height="27.666666666666671"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -46,8 +52,8 @@
                                     <constraint firstItem="Wig-Ve-x1V" firstAttribute="centerY" secondItem="fyM-YW-Iwg" secondAttribute="centerY" id="MI4-Ej-J0h"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-eH-P8K" userLabel="Game Collection View">
-                                <rect key="frame" x="-8" y="74" width="414" height="545.33333333333337"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Rjp-eH-P8K" userLabel="Game Collection View">
+                                <rect key="frame" x="0.0" y="74" width="414" height="545.33333333333337"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5no-lA-tFz">
                                     <size key="itemSize" width="158" height="224"/>
@@ -110,6 +116,7 @@
                     <connections>
                         <outlet property="game_COLVIEW_cardsCollection" destination="Rjp-eH-P8K" id="LGX-yF-dGo"/>
                         <outlet property="game_LBL_moves" destination="uO0-ae-02Z" id="iED-ky-PiU"/>
+                        <outlet property="game_LBL_timer" destination="reI-uj-s17" id="y1X-17-EOd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

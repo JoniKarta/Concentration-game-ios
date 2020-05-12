@@ -10,10 +10,10 @@ import Foundation
 
 
 class CardModel {
-    
-    // This function generated random and unique pairs of cards
+    var cardsArray = [Card]()
+
+    // This function generates random and unique pairs of cards
     func createCards() -> [Card]{
-        var cardsArray = [Card]()
         var trackGeneratedNumbers : [UInt32] = [UInt32]()
         while trackGeneratedNumbers.count < 8 {
             let cardNumber = arc4random_uniform(12) + 1
@@ -23,9 +23,17 @@ class CardModel {
                 let cardTwo = Card(cardName : "card\(cardNumber)")
                 cardsArray.append(cardOne)
                 cardsArray.append(cardTwo)
-                print(cardNumber)
             }
         }
         return cardsArray.shuffled()
     }
+    
+    func checkGameBoard()-> Bool{
+           for card in cardsArray {
+               if card.isMatched == false {
+                   return false
+               }
+           }
+           return true
+       }
 }

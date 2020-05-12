@@ -14,10 +14,14 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
 {
     @IBOutlet weak var game_LBL_moves: UILabel!
     @IBOutlet weak var game_COLVIEW_cardsCollection: UICollectionView!
+    @IBOutlet weak var game_LBL_timer: UILabel!
+    
     private var cards : [Card] = [Card]()
     private var model = CardModel()
     private var countMoves : Int = 0
-    private var firstCardFlipped : IndexPath?
+    private var firstCardFlipped : IndexPath?  
+    private var gameTimer : Timer?
+    private var milliseconds : Float = 50 * 1000
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
         cards = model.createCards()
+        gameTimer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     // MARK: - UICollectionView Protocol Methods
    
@@ -39,28 +44,36 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         return cell
     }
     
+          
+                
+     
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! CardCollectionViewCell
         cell.flip()
         let selectedCard = cards[indexPath.row]
-        
+
         if selectedCard.isFlipped == false {
-            // Flip the card
             cell.flip()
-            
-            // Changed the state of the card
             selectedCard.isFlipped = true
-            
+
             if firstCardFlipped == nil{ // Which means it's the first card the player flip
                 firstCardFlipped = indexPath
+
             }else{
                 // It's the second card
                 hasMatch(firstCardIndex: firstCardFlipped!, secondCardIndex: indexPath)
+                if model.checkGameBoard() == true{
+                    gameTimer?.invalidate()
+                    viewAlertDialog(customMessage: "You have won the game!")
+                }
             }
         }else {
             cell.flipBack()
         }
     }
+    
+    
     
     // MARK: - Configuaration of main layout
     func configureCardsLayout() {
@@ -69,18 +82,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         layout.itemSize = CGSize(width: width, height: width)
     }
 
-//        override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-//            super.viewWillTransition(to: size, with: coordinator)
-//            if UIDevice.current.orientation.isLandscape {
-//                print("Landscape")
-//                let width = (view.frame.size.width - 20) / 3
-//                let layout = game_CV_cardscollection.collectionViewLayout as! UICollectionViewFlowLayout
-//                layout.itemSize = CGSize(width: width, height: width)
-//
-//            } else {
-//                print("Portrait")
-//                        }
-//        }
+
     // MARK: - Game logic
     
     func hasMatch(firstCardIndex : IndexPath, secondCardIndex : IndexPath) {
@@ -124,6 +126,23 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         self.countMoves = Int(game_LBL_moves.text!)!
         self.countMoves +=  1
         self.game_LBL_moves.text = String(countMoves)
+    }
+    
+    
+    // MARK: - Timer methods
+    @objc func updateTimer() {
+        milliseconds -= 1
+        let seconds = String(format : "%.2f", milliseconds / 1000)
+        self.game_LBL_timer.text = "Time Remaining: \(seconds)"
+        if milliseconds <= 0{
+            gameTimer?.invalidate()
+            viewAlertDialog(customMessage: "You are not that fast")
+        }
+    }
+    func viewAlertDialog(customMessage : String){
+        let alert = UIAlertController(title: "Game Over", message: customMessage, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     
