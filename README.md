@@ -10,7 +10,7 @@ In this project i implemented MVC architectural pattern to decouple the the logi
 View:
       Display all the card using collection view.
 Model: 
-      Hold list of cards which the controller can fetch. 
+      Hold list of cards which the controller can fetch and let the view display the state of the model. 
 Contoller:
       Manage the interaction of the user with the collection view and the model.
       
