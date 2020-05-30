@@ -22,10 +22,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     private var firstCardFlipped : IndexPath?
     private var secondCardFlipped : IndexPath?
     private var gameTimer : Timer?
-    private var milliseconds : Float = 50 * 1000
+    private var milliseconds : Float = 0 * 1000
+    var player: Player = Player()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("\(player.playerName)")
         configureCardsLayout()
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
@@ -65,7 +67,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             hasMatch(firstCardIndex: self.firstCardFlipped!, secondCardIndex: self.secondCardFlipped!)
             if gameModel.checkGameBoard() == true{
                 gameTimer?.invalidate()
-                viewAlertDialog(customMessage: "You have won the game!")
+                self.performSegue(withIdentifier: "segue_game_scores", sender: self)
+
             }
             
         }
@@ -95,7 +98,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardTwo.isMatched = true
             cardOneCellView.remove()
             cardTwoCellView.remove()
-            
         }else{
             cardOne.isFlipped = false
             cardTwo.isFlipped = false
@@ -113,19 +115,17 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     // MARK: - Timer methods
     @objc func updateTimer() {
-        milliseconds -= 1
+        milliseconds += 1
         let seconds = String(format : "%.2f", milliseconds / 1000)
-        self.game_LBL_timer.text = "Time Remaining: \(seconds)"
-        if milliseconds <= 0{
-            gameTimer?.invalidate()
-            viewAlertDialog(customMessage: "You are not that fast")
-        }
+        self.game_LBL_timer.text = "Time Passed: \(seconds)"
+        
     }
     func viewAlertDialog(customMessage : String){
         let alert = UIAlertController(title: "Game Over", message: customMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true)
     }
+    
     
     
 }

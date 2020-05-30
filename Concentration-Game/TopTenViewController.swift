@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TopTenViewController: UIViewController, UITableViewDataSource,UITableViewDelegate{
+class TopTenViewController: UIViewController{
    
     @IBOutlet weak var topten_LST_scores: UITableView!
 
@@ -18,27 +18,12 @@ class TopTenViewController: UIViewController, UITableViewDataSource,UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createTestPlayerList()
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
         // Do any additional setup after loading the view.
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        createTestPlayerList()
-        return playerScores.count
-       }
-       
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : CustomEntryCell? = self.topten_LST_scores.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as? CustomEntryCell
-        cell?.topten_LBL_playername?.text = self.playerScores[indexPath.row].playerName
-        cell?.topten_LBL_playertime?.text = self.playerScores[indexPath.row].playerScore
-        cell?.topten_LBL_playerdate?.text = self.playerScores[indexPath.row].playerPlayDate
-        
-        if(cell == nil){
-            cell = CustomEntryCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellReuseIdentifier	)
-        }
-        return cell!
-    }
     
     func createTestPlayerList() {
         self.playerScores.append(Player(playerName: "Jonathan",playerScore: "2:04",playerPlayDate: "Some date"))
@@ -47,6 +32,24 @@ class TopTenViewController: UIViewController, UITableViewDataSource,UITableViewD
         self.playerScores.append(Player(playerName: "David",playerScore: "5:04",playerPlayDate: "Some date"))
         
     }
+}
+extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          return playerScores.count
+         }
+         
+         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+          var cell : CustomEntryCell? = self.topten_LST_scores.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as? CustomEntryCell
+          cell?.topten_LBL_playername?.text = self.playerScores[indexPath.row].playerName
+          cell?.topten_LBL_playertime?.text = self.playerScores[indexPath.row].playerScore
+          cell?.topten_LBL_playerdate?.text = self.playerScores[indexPath.row].playerPlayDate
+          
+          if(cell == nil){
+              cell = CustomEntryCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellReuseIdentifier    )
+          }
+          return cell!
+      }
+      
 }
 class CustomEntryCell: UITableViewCell {
     @IBOutlet weak var topten_LBL_playername: UILabel!

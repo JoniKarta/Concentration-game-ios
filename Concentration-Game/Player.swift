@@ -13,6 +13,9 @@ class Player {
     var playerScore : String = ""
     var playerPlayDate: String = ""
     
+    init() {
+        
+    }
     init(playerName: String, playerScore: String, playerPlayDate: String){
         self.playerName = playerName
         self.playerScore = playerScore
