@@ -67,6 +67,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             hasMatch(firstCardIndex: self.firstCardFlipped!, secondCardIndex: self.secondCardFlipped!)
             if gameModel.checkGameBoard() == true{
                 gameTimer?.invalidate()
+                player.playerScore = String(format : "%.2f", milliseconds / 1000)
+                print("Player details are: \(player.playerName) \(player.playerScore) \(player.playerPlayDate)")
                 self.performSegue(withIdentifier: "segue_game_scores", sender: self)
 
             }
@@ -114,11 +116,10 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     
     // MARK: - Timer methods
-    @objc func updateTimer() {
+    @objc func updateTimer(){
         milliseconds += 1
         let seconds = String(format : "%.2f", milliseconds / 1000)
         self.game_LBL_timer.text = "Time Passed: \(seconds)"
-        
     }
     func viewAlertDialog(customMessage : String){
         let alert = UIAlertController(title: "Game Over", message: customMessage, preferredStyle: .alert)
