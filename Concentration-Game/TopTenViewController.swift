@@ -12,36 +12,44 @@ class TopTenViewController: UIViewController, UITableViewDataSource,UITableViewD
    
     @IBOutlet weak var topten_LST_scores: UITableView!
 
-    var testArray: [String] = ["cat", "dog", "lion", "bear", "elephant", "tiger", "monkey"]
-    let cellReuseIdentifier = "cell"
+    var playerScores = [Player]()
+    
+    let cellReuseIdentifier = "custom_cell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
-        self.topten_LST_scores.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         // Do any additional setup after loading the view.
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testArray.count
+        createTestPlayerList()
+        return playerScores.count
        }
        
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : UITableViewCell? = self.topten_LST_scores.dequeueReusableCell(withIdentifier: cellReuseIdentifier)
-        cell?.textLabel?.text = self.testArray[indexPath.row]
+        var cell : CustomEntryCell? = self.topten_LST_scores.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as? CustomEntryCell
+        cell?.topten_LBL_playername?.text = self.playerScores[indexPath.row].playerName
+        cell?.topten_LBL_playertime?.text = self.playerScores[indexPath.row].playerScore
+        cell?.topten_LBL_playerdate?.text = self.playerScores[indexPath.row].playerPlayDate
+        
         if(cell == nil){
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellReuseIdentifier	)
+            cell = CustomEntryCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellReuseIdentifier	)
         }
         return cell!
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    func createTestPlayerList() {
+        self.playerScores.append(Player(playerName: "Jonathan",playerScore: "2:04",playerPlayDate: "Some date"))
+        self.playerScores.append(Player(playerName: "Nisim",playerScore: "3:04",playerPlayDate: "antoher date"))
+        self.playerScores.append(Player(playerName: "Ron",playerScore: "4:04",playerPlayDate: "Another date"))
+        self.playerScores.append(Player(playerName: "David",playerScore: "5:04",playerPlayDate: "Some date"))
+        
     }
-    */
+}
+class CustomEntryCell: UITableViewCell {
+    @IBOutlet weak var topten_LBL_playername: UILabel!
+    @IBOutlet weak var topten_LBL_playertime: UILabel!
+    @IBOutlet weak var topten_LBL_playerdate: UILabel!
 }

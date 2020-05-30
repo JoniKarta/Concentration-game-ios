@@ -19,6 +19,7 @@
 		C042ED25246154D00041EB88 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED24246154D00041EB88 /* Card.swift */; };
 		C042ED29246160670041EB88 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED28246160670041EB88 /* CardCollectionViewCell.swift */; };
 		C0B9EFCC2482816900BF28C7 /* TopTenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */; };
+		C0B9EFCE2482A4E100BF28C7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9EFCD2482A4E100BF28C7 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		C042ED24246154D00041EB88 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C042ED28246160670041EB88 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
 		C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenViewController.swift; sourceTree = "<group>"; };
+		C0B9EFCD2482A4E100BF28C7 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +109,11 @@
 		C042ECF124613ECE0041EB88 /* Concentration-Game */ = {
 			isa = PBXGroup;
 			children = (
+				C042ECF624613ECE0041EB88 /* ViewController.swift */,
+				C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */,
+				C0B9EFCD2482A4E100BF28C7 /* Player.swift */,
 				C042ECF224613ECE0041EB88 /* AppDelegate.swift */,
 				C042ECF424613ECE0041EB88 /* SceneDelegate.swift */,
-				C042ECF624613ECE0041EB88 /* ViewController.swift */,
 				C042ED28246160670041EB88 /* CardCollectionViewCell.swift */,
 				C042ED22246153AD0041EB88 /* GameModel.swift */,
 				C042ED24246154D00041EB88 /* Card.swift */,
@@ -117,7 +121,6 @@
 				C042ECFB24613ED00041EB88 /* Assets.xcassets */,
 				C042ECFD24613ED00041EB88 /* LaunchScreen.storyboard */,
 				C042ED0024613ED00041EB88 /* Info.plist */,
-				C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */,
 			);
 			path = "Concentration-Game";
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				C042ECF724613ECE0041EB88 /* ViewController.swift in Sources */,
 				C042ED23246153AD0041EB88 /* GameModel.swift in Sources */,
+				C0B9EFCE2482A4E100BF28C7 /* Player.swift in Sources */,
 				C042ED25246154D00041EB88 /* Card.swift in Sources */,
 				C0B9EFCC2482816900BF28C7 /* TopTenViewController.swift in Sources */,
 				C042ECF324613ECE0041EB88 /* AppDelegate.swift in Sources */,
