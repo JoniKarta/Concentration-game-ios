@@ -136,18 +136,57 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-NC-cqB">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="74.333333333333329"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top Ten" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcW-8E-3BN">
+                                                <rect key="frame" x="164" y="21.666666666666671" width="86.333333333333314" height="31.333333333333329"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="mcW-8E-3BN" firstAttribute="centerY" secondItem="Mai-NC-cqB" secondAttribute="centerY" id="97o-a1-KOF"/>
+                                            <constraint firstItem="mcW-8E-3BN" firstAttribute="centerX" secondItem="Mai-NC-cqB" secondAttribute="centerX" id="lND-Lk-MPw"/>
+                                        </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-Fp-fni">
                                         <rect key="frame" x="0.0" y="74.333333333333314" width="414" height="743.66666666666674"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PZ-Mt-WZm" userLabel="View1">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="372"/>
+                                                <subviews>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xiy-lA-t45">
+                                                        <rect key="frame" x="20" y="20" width="374" height="332"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    </tableView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="xiy-lA-t45" firstAttribute="leading" secondItem="6PZ-Mt-WZm" secondAttribute="leading" constant="20" id="KRN-ej-ro5"/>
+                                                    <constraint firstAttribute="trailing" secondItem="xiy-lA-t45" secondAttribute="trailing" constant="20" id="Lco-CW-neM"/>
+                                                    <constraint firstItem="xiy-lA-t45" firstAttribute="centerX" secondItem="6PZ-Mt-WZm" secondAttribute="centerX" id="PhX-TV-SUB"/>
+                                                    <constraint firstItem="xiy-lA-t45" firstAttribute="top" secondItem="6PZ-Mt-WZm" secondAttribute="top" constant="20" id="YuF-qo-JuP"/>
+                                                    <constraint firstAttribute="bottom" secondItem="xiy-lA-t45" secondAttribute="bottom" constant="20" id="YzF-Xb-Zw8"/>
+                                                    <constraint firstItem="xiy-lA-t45" firstAttribute="centerY" secondItem="6PZ-Mt-WZm" secondAttribute="centerY" id="mIa-0e-Nur"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUv-ZB-bcO" userLabel="View2">
                                                 <rect key="frame" x="0.0" y="372" width="414" height="371.66666666666674"/>
+                                                <subviews>
+                                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="J4l-QE-vb2">
+                                                        <rect key="frame" x="20" y="20" width="374" height="331.66666666666669"/>
+                                                    </mapView>
+                                                </subviews>
                                                 <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="J4l-QE-vb2" firstAttribute="centerY" secondItem="nUv-ZB-bcO" secondAttribute="centerY" id="D3h-0e-2fp"/>
+                                                    <constraint firstAttribute="bottom" secondItem="J4l-QE-vb2" secondAttribute="bottom" constant="20" id="KIU-Za-Z2p"/>
+                                                    <constraint firstItem="J4l-QE-vb2" firstAttribute="leading" secondItem="nUv-ZB-bcO" secondAttribute="leading" constant="20" id="O8P-Uo-dib"/>
+                                                    <constraint firstAttribute="trailing" secondItem="J4l-QE-vb2" secondAttribute="trailing" constant="20" id="qU9-Sz-oIs"/>
+                                                    <constraint firstItem="J4l-QE-vb2" firstAttribute="top" secondItem="nUv-ZB-bcO" secondAttribute="top" constant="20" id="rgN-dt-Cdb"/>
+                                                    <constraint firstItem="J4l-QE-vb2" firstAttribute="centerX" secondItem="nUv-ZB-bcO" secondAttribute="centerX" id="wbN-pJ-Als"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>
