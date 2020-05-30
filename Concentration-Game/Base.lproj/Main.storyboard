@@ -131,45 +131,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lPv-fB-Bwj">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p89-3y-Hd5">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCY-a2-8vI" userLabel="Table view">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="409"/>
-                                        <subviews>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wj4-C0-4Pf">
-                                                <rect key="frame" x="87" y="140" width="240" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            </tableView>
-                                        </subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mai-NC-cqB">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="74.333333333333329"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMN-hh-FQN" userLabel="Map view">
-                                        <rect key="frame" x="0.0" y="409" width="414" height="409"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8Bf-Fp-fni">
+                                        <rect key="frame" x="0.0" y="74.333333333333314" width="414" height="743.66666666666674"/>
                                         <subviews>
-                                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="vR7-7e-hcV">
-                                                <rect key="frame" x="87" y="140" width="240" height="128"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </mapView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6PZ-Mt-WZm" userLabel="View1">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="372"/>
+                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nUv-ZB-bcO" userLabel="View2">
+                                                <rect key="frame" x="0.0" y="372" width="414" height="371.66666666666674"/>
+                                                <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
+                                        <constraints>
+                                            <constraint firstItem="6PZ-Mt-WZm" firstAttribute="width" secondItem="nUv-ZB-bcO" secondAttribute="width" id="gKm-a8-31Q"/>
+                                            <constraint firstItem="6PZ-Mt-WZm" firstAttribute="height" secondItem="nUv-ZB-bcO" secondAttribute="height" id="imC-2w-6kV"/>
+                                        </constraints>
+                                        <variation key="heightClass=compact-widthClass=compact" axis="horizontal"/>
+                                        <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
+                                    </stackView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="uCY-a2-8vI" firstAttribute="height" secondItem="VMN-hh-FQN" secondAttribute="height" id="LDO-OX-Pc3"/>
-                                    <constraint firstItem="uCY-a2-8vI" firstAttribute="width" secondItem="VMN-hh-FQN" secondAttribute="width" id="bT6-kJ-LdP"/>
+                                    <constraint firstItem="8Bf-Fp-fni" firstAttribute="top" secondItem="Mai-NC-cqB" secondAttribute="bottom" id="0Ld-E5-kLy"/>
+                                    <constraint firstItem="Mai-NC-cqB" firstAttribute="top" secondItem="p89-3y-Hd5" secondAttribute="top" id="10G-9h-cgz"/>
+                                    <constraint firstItem="8Bf-Fp-fni" firstAttribute="leading" secondItem="p89-3y-Hd5" secondAttribute="leading" id="8hz-7N-GO5"/>
+                                    <constraint firstItem="Mai-NC-cqB" firstAttribute="leading" secondItem="p89-3y-Hd5" secondAttribute="leading" id="H3D-ak-ZIg"/>
+                                    <constraint firstAttribute="trailing" secondItem="8Bf-Fp-fni" secondAttribute="trailing" id="IRf-Oc-JaN"/>
+                                    <constraint firstItem="8Bf-Fp-fni" firstAttribute="top" secondItem="Mai-NC-cqB" secondAttribute="bottom" id="Rwp-bd-m5T"/>
+                                    <constraint firstItem="Mai-NC-cqB" firstAttribute="height" secondItem="8Bf-Fp-fni" secondAttribute="height" multiplier="0.1" id="hgl-7L-ntK"/>
+                                    <constraint firstAttribute="bottom" secondItem="8Bf-Fp-fni" secondAttribute="bottom" id="j0w-4o-lIW"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mai-NC-cqB" secondAttribute="trailing" id="xen-2a-RDq"/>
                                 </constraints>
-                                <variation key="heightClass=compact-widthClass=regular" axis="horizontal"/>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6CM-dK-8JN" firstAttribute="bottom" secondItem="lPv-fB-Bwj" secondAttribute="bottom" id="Amk-Bu-klQ"/>
-                            <constraint firstItem="lPv-fB-Bwj" firstAttribute="top" secondItem="6CM-dK-8JN" secondAttribute="top" id="UNl-i7-0hb"/>
-                            <constraint firstItem="6CM-dK-8JN" firstAttribute="trailing" secondItem="lPv-fB-Bwj" secondAttribute="trailing" id="Z5l-WE-7wB"/>
-                            <constraint firstItem="lPv-fB-Bwj" firstAttribute="leading" secondItem="6CM-dK-8JN" secondAttribute="leading" id="ZNM-YY-c5f"/>
+                            <constraint firstItem="p89-3y-Hd5" firstAttribute="top" secondItem="6CM-dK-8JN" secondAttribute="top" id="BUx-a2-7XT"/>
+                            <constraint firstItem="6CM-dK-8JN" firstAttribute="bottom" secondItem="p89-3y-Hd5" secondAttribute="bottom" id="DkX-eR-nJU"/>
+                            <constraint firstItem="6CM-dK-8JN" firstAttribute="trailing" secondItem="p89-3y-Hd5" secondAttribute="trailing" id="OFx-zb-8W7"/>
+                            <constraint firstItem="p89-3y-Hd5" firstAttribute="leading" secondItem="6CM-dK-8JN" secondAttribute="leading" id="vJo-t5-964"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6CM-dK-8JN"/>
                     </view>
