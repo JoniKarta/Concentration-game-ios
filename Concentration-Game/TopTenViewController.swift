@@ -18,24 +18,41 @@ class TopTenViewController: UIViewController{
     var converter: ConverterService = ConverterService()
     override func viewDidLoad() {
         super.viewDidLoad()
-        createTestPlayerList()
-//        print("Player details Game: \(currentPlayerPlayed.name) \(currentPlayerPlayed.score) \(currentPlayerPlayed.datePlayed)")
+        displayTableView()
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
         // Do any additional setup after loading the view.
     }
     
     
-    func createTestPlayerList() {
-        self.playerScores.append(Player(playerName: "Jonathan",playerScore: 2.04,playerPlayDate: "Some date"))
-        self.playerScores.append(Player(playerName: "Nisim",playerScore: 3.04,playerPlayDate: "antoher date"))
-        self.playerScores.append(Player(playerName: "Ron",playerScore: 4.94,playerPlayDate: "Another date"))
-        self.playerScores.append(Player(playerName: "David",playerScore: 5.704,playerPlayDate: "Some date"))
-       let newData = converter.playerListToJson(playerList: self.playerScores)
-        let listFromStorage : [Player] = converter.jsonToPlayerList(jsonPlayerList: newData) ?? [Player]()
-        for item in listFromStorage {
-            print("\(item)")
+    func displayTableView() {
+        
+        updateTableView(newPlayer: self.currentPlayerPlayed)
+    }
+    func writeToLocalStorage(playersList: [Player]){
+        let defaults = UserDefaults.standard
+        defaults.set(converter.playerListToJson(playerList: playersList), forKey: "test")
+    }
+    
+    func readFromLocalStorage() -> [Player]{
+        let defaults = UserDefaults.standard
+        if let newList: [Player] = converter.jsonToPlayerList(jsonPlayerList: defaults.string(forKey: "test")!){
+           return newList
         }
+        return [Player]()
+    }
+    func updateTableView(newPlayer: Player){
+        var playerListFromStorage = readFromLocalStorage()
+        if playerListFromStorage.count < 10 {
+            playerListFromStorage.append(newPlayer)
+            writeToLocalStorage(playersList: playerListFromStorage.sorted(by: {$0.score < $1.score}))
+        }else if(playerListFromStorage.last!.score > newPlayer.score){
+            playerListFromStorage.remove(at: playerListFromStorage.count - 1)
+            playerListFromStorage.append(newPlayer)
+            writeToLocalStorage(playersList: playerListFromStorage.sorted(by: {$0.score < $1.score}))
+        }
+        self.playerScores = readFromLocalStorage()
+
     }
 }
 extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
