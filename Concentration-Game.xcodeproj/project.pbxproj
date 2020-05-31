@@ -18,6 +18,7 @@
 		C042ED23246153AD0041EB88 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED22246153AD0041EB88 /* GameModel.swift */; };
 		C042ED25246154D00041EB88 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED24246154D00041EB88 /* Card.swift */; };
 		C042ED29246160670041EB88 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C042ED28246160670041EB88 /* CardCollectionViewCell.swift */; };
+		C07D6CC82483830300F7BBA7 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07D6CC72483830200F7BBA7 /* Converter.swift */; };
 		C0B9EFCC2482816900BF28C7 /* TopTenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */; };
 		C0B9EFCE2482A4E100BF28C7 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0B9EFCD2482A4E100BF28C7 /* Player.swift */; };
 		C0F2549D2482EE1A005C4D11 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F2549C2482EE1A005C4D11 /* LaunchViewController.swift */; };
@@ -58,6 +59,7 @@
 		C042ED22246153AD0041EB88 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		C042ED24246154D00041EB88 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		C042ED28246160670041EB88 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 0; };
+		C07D6CC72483830200F7BBA7 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTenViewController.swift; sourceTree = "<group>"; };
 		C0B9EFCD2482A4E100BF28C7 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		C0F2549C2482EE1A005C4D11 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				C042ED28246160670041EB88 /* CardCollectionViewCell.swift */,
 				C042ED22246153AD0041EB88 /* GameModel.swift */,
 				C042ED24246154D00041EB88 /* Card.swift */,
+				C07D6CC72483830200F7BBA7 /* Converter.swift */,
 				C042ECF824613ECE0041EB88 /* Main.storyboard */,
 				C042ECFB24613ED00041EB88 /* Assets.xcassets */,
 				C042ECFD24613ED00041EB88 /* LaunchScreen.storyboard */,
@@ -281,6 +284,7 @@
 				C042ED23246153AD0041EB88 /* GameModel.swift in Sources */,
 				C0B9EFCE2482A4E100BF28C7 /* Player.swift in Sources */,
 				C042ED25246154D00041EB88 /* Card.swift in Sources */,
+				C07D6CC82483830300F7BBA7 /* Converter.swift in Sources */,
 				C0B9EFCC2482816900BF28C7 /* TopTenViewController.swift in Sources */,
 				C042ECF324613ECE0041EB88 /* AppDelegate.swift in Sources */,
 				C042ED29246160670041EB88 /* CardCollectionViewCell.swift in Sources */,

@@ -27,7 +27,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(player.playerName)")
+        print("\(player.name)")
         configureCardsLayout()
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
@@ -67,8 +67,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             hasMatch(firstCardIndex: self.firstCardFlipped!, secondCardIndex: self.secondCardFlipped!)
             if gameModel.checkGameBoard() == true{
                 gameTimer?.invalidate()
-                player.playerScore = String(format : "%.2f", milliseconds / 1000)
-                print("Player details are: \(player.playerName) \(player.playerScore) \(player.playerPlayDate)")
+                player.score = milliseconds / 1000
+                print("Player details are: \(player.name) \(player.score) \(player.datePlayed)")
                 self.performSegue(withIdentifier: "segue_game_scores", sender: self)
 
             }
@@ -76,7 +76,12 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         }
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "segue_game_scores" {
+            let destinationController = segue.destination as! TopTenViewController
+            destinationController.currentPlayerPlayed = player
+        }
+    }
     // MARK: - Configuaration of main layout
     func configureCardsLayout() {
         let width = (view.frame.size.width - 40) / 4
@@ -100,6 +105,9 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardTwo.isMatched = true
             cardOneCellView.remove()
             cardTwoCellView.remove()
+            // FOR TESTING ONLY
+             player.score =  milliseconds / 1000
+            self.performSegue(withIdentifier: "segue_game_scores", sender: self)
         }else{
             cardOne.isFlipped = false
             cardTwo.isFlipped = false

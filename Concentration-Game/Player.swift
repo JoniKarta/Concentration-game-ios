@@ -8,17 +8,21 @@
 
 import Foundation
 
-class Player {
-    var playerName: String = ""
-    var playerScore : String = ""
-    var playerPlayDate: String = ""
+class Player : Codable, CustomStringConvertible{
+    var name: String = ""
+    var score : Float = 0
+    var datePlayed: String = ""
     
     init() {
         
     }
-    init(playerName: String, playerScore: String, playerPlayDate: String){
-        self.playerName = playerName
-        self.playerScore = playerScore
-        self.playerPlayDate = playerPlayDate
+    init(playerName: String, playerScore: Float, playerPlayDate: String){
+        self.name = playerName
+        self.score = playerScore
+        self.datePlayed = playerPlayDate
+    }
+    
+    public var description: String {
+        return "Player Details: \n Name: \(self.name)\n Score: \(self.score)\n Date: \(self.datePlayed)"
     }
 }

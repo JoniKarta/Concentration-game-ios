@@ -18,10 +18,10 @@ class LaunchViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "play_segue" {
+        if segue.identifier == "play_segue"{
             let destinationController = segue.destination as! ViewController
-            destinationController.player.playerName = launch_TVIEW_name.text!
-            destinationController.player.playerPlayDate = dateFormatter()
+            destinationController.player.name = launch_TVIEW_name.text!
+            destinationController.player.datePlayed = dateFormatter()
         }
     }
     
@@ -36,7 +36,6 @@ class LaunchViewController: UIViewController {
         
     }
     
-   
-  
-
+    
 }
+
