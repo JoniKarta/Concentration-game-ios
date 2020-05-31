@@ -148,10 +148,20 @@
                                                 <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r6Z-Pw-ma7">
+                                                <rect key="frame" x="29" y="15.000000000000004" width="34" height="43.333333333333343"/>
+                                                <state key="normal" title="Back"/>
+                                                <connections>
+                                                    <segue destination="LWC-Tf-NAh" kind="show" identifier="sweet_home" id="45S-1G-isW"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="r6Z-Pw-ma7" firstAttribute="top" secondItem="Mai-NC-cqB" secondAttribute="top" constant="15" id="3sZ-vn-o25"/>
                                             <constraint firstItem="mcW-8E-3BN" firstAttribute="centerY" secondItem="Mai-NC-cqB" secondAttribute="centerY" id="97o-a1-KOF"/>
+                                            <constraint firstAttribute="bottom" secondItem="r6Z-Pw-ma7" secondAttribute="bottom" constant="15" id="cPE-mQ-8m1"/>
+                                            <constraint firstItem="r6Z-Pw-ma7" firstAttribute="leading" secondItem="Mai-NC-cqB" secondAttribute="leading" constant="29" id="jTR-xT-Pmy"/>
                                             <constraint firstItem="mcW-8E-3BN" firstAttribute="centerX" secondItem="Mai-NC-cqB" secondAttribute="centerX" id="lND-Lk-MPw"/>
                                         </constraints>
                                     </view>
@@ -166,34 +176,34 @@
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                         <prototypes>
                                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="custom_cell" id="yP1-Cs-Ths" customClass="CustomEntryCell" customModule="Concentration_Game" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="28" width="374" height="61.333332061767578"/>
+                                                                <rect key="frame" x="0.0" y="28" width="374" height="64"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yP1-Cs-Ths" id="hDh-JM-qvk">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="61.333332061767578"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="64"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
-                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DEx-pL-ra7">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="61.333333333333336"/>
+                                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="DEx-pL-ra7">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="64"/>
                                                                             <subviews>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name : Your name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WR-yo-gvd" userLabel="Name">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="20.333333333333332"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4WR-yo-gvd" userLabel="Name">
+                                                                                    <rect key="frame" x="148.33333333333334" y="0.0" width="77.666666666666657" height="20.333333333333332"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" constant="20.333333333333332" id="acu-ts-h2I"/>
                                                                                     </constraints>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <nil key="textColor"/>
+                                                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time : Your time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg7-M6-RTV" userLabel="Time">
-                                                                                    <rect key="frame" x="0.0" y="20.333333333333329" width="374" height="20.666666666666671"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <nil key="textColor"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sg7-M6-RTV" userLabel="Time">
+                                                                                    <rect key="frame" x="156" y="23.333333333333336" width="62" height="17.333333333333336"/>
+                                                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
-                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date : Date you played" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-jf-orW" userLabel="Date">
-                                                                                    <rect key="frame" x="0.0" y="41" width="374" height="20.333333333333329"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                    <nil key="textColor"/>
+                                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date you played" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-jf-orW" userLabel="Date">
+                                                                                    <rect key="frame" x="144.66666666666666" y="43.666666666666664" width="84.666666666666657" height="20.333333333333336"/>
+                                                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
+                                                                                    <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
@@ -210,9 +220,9 @@
                                                                     </constraints>
                                                                 </tableViewCellContentView>
                                                                 <connections>
-                                                                    <outlet property="topten_LBL_playerdate" destination="Kli-jf-orW" id="chQ-XD-0ir"/>
+                                                                    <outlet property="topten_LBL_playerdate" destination="Kli-jf-orW" id="peC-gk-el7"/>
                                                                     <outlet property="topten_LBL_playername" destination="4WR-yo-gvd" id="uif-uL-hfF"/>
-                                                                    <outlet property="topten_LBL_playertime" destination="sg7-M6-RTV" id="K5K-OS-6ir"/>
+                                                                    <outlet property="topten_LBL_playertime" destination="sg7-M6-RTV" id="x1S-8b-kgO"/>
                                                                 </connections>
                                                             </tableViewCell>
                                                         </prototypes>
@@ -281,26 +291,26 @@
                     <navigationItem key="navigationItem" id="1nB-Bf-qq9"/>
                     <connections>
                         <outlet property="topten_LST_scores" destination="xiy-lA-t45" id="I8U-Ip-9y0"/>
-                        <outlet property="toten_MAP_mapView" destination="J4l-QE-vb2" id="22U-rx-7qQ"/>
+                        <outlet property="topten_MAP_mapView" destination="J4l-QE-vb2" id="22U-rx-7qQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oue-pn-3Xj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="-1527"/>
+            <point key="canvasLocation" x="2516" y="-1525"/>
         </scene>
         <!--Launch View Controller-->
         <scene sceneID="QN7-3o-2Ic">
             <objects>
                 <viewController id="LWC-Tf-NAh" customClass="LaunchViewController" customModule="Concentration_Game" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WmB-3F-qIc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gamebackground" translatesAutoresizingMaskIntoConstraints="NO" id="t7M-pc-BVb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="45" translatesAutoresizingMaskIntoConstraints="NO" id="rQP-69-X7V">
-                                <rect key="frame" x="138.66666666666666" y="326" width="136.99999999999997" height="244"/>
+                                <rect key="frame" x="138.66666666666666" y="299" width="136.99999999999997" height="244"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Your Name" textAlignment="center" clearsOnBeginEditing="YES" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gqd-pl-6Ks" userLabel="Name">
                                         <rect key="frame" x="0.0" y="0.0" width="137" height="34"/>
@@ -346,6 +356,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="64L-X6-eLr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="PkM-8n-SXh"/>
                     <connections>
                         <outlet property="launch_TVIEW_name" destination="Gqd-pl-6Ks" id="Tpg-az-7Yt"/>
                     </connections>
