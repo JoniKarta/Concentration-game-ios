@@ -27,7 +27,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(player.name)")
         configureCardsLayout()
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
@@ -68,7 +67,6 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             if gameModel.checkGameBoard() == true{
                 gameTimer?.invalidate()
                 player.score = milliseconds / 1000
-                print("Player details are: \(player.name) \(player.score) \(player.datePlayed)")
                 self.performSegue(withIdentifier: "segue_game_scores", sender: self)
 
             }

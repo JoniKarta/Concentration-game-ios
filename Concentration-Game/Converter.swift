@@ -20,11 +20,13 @@ class ConverterService {
     
     func jsonToPlayerList(jsonPlayerList: String) -> [Player]? {
         let decoder = JSONDecoder()
-        let data : [Player]
-        if let convertedData: Data = jsonPlayerList.data(using: .utf8){
+        if jsonPlayerList == "" {
+           return [Player]()
+        }else{
+            let data: [Player]
+            let convertedData: Data = jsonPlayerList.data(using: .utf8)!
             data = try! decoder.decode([Player].self,from: convertedData)
             return data
         }
-        return nil
-    }
+}
 }

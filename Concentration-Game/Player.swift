@@ -12,10 +12,12 @@ class Player : Codable, CustomStringConvertible{
     var name: String = ""
     var score : Float = 0
     var datePlayed: String = ""
+    var location: Location = Location()
     
     init() {
         
     }
+    
     init(playerName: String, playerScore: Float, playerPlayDate: String){
         self.name = playerName
         self.score = playerScore
@@ -23,6 +25,6 @@ class Player : Codable, CustomStringConvertible{
     }
     
     public var description: String {
-        return "Player Details: \n Name: \(self.name)\n Score: \(self.score)\n Date: \(self.datePlayed)"
+        return "Player Details: \n Name: \(self.name)\n Score: \(self.score)\n Date: \(self.datePlayed)\n \(String(describing: self.location)) "
     }
 }

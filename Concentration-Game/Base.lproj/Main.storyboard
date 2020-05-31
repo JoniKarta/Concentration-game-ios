@@ -281,6 +281,7 @@
                     <navigationItem key="navigationItem" id="1nB-Bf-qq9"/>
                     <connections>
                         <outlet property="topten_LST_scores" destination="xiy-lA-t45" id="I8U-Ip-9y0"/>
+                        <outlet property="toten_MAP_mapView" destination="J4l-QE-vb2" id="22U-rx-7qQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oue-pn-3Xj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

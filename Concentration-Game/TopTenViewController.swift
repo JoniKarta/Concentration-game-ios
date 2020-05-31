@@ -7,18 +7,26 @@
 //
 
 import UIKit
+import MapKit
 
 class TopTenViewController: UIViewController{
    
     @IBOutlet weak var topten_LST_scores: UITableView!
-
+    @IBOutlet weak var toten_MAP_mapView: MKMapView!
+    
     var playerScores = [Player]()
     var currentPlayerPlayed : Player = Player()
     let cellReuseIdentifier = "custom_cell"
     var converter: ConverterService = ConverterService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearStroateTestingOnly()
         displayTableView()
+        addMarkerToMap(playerList:  self.playerScores)
+        for item in self.playerScores {
+            print(item)
+        }
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
         // Do any additional setup after loading the view.
@@ -36,7 +44,7 @@ class TopTenViewController: UIViewController{
     
     func readFromLocalStorage() -> [Player]{
         let defaults = UserDefaults.standard
-        if let newList: [Player] = converter.jsonToPlayerList(jsonPlayerList: defaults.string(forKey: "test")!){
+        if let newList: [Player] = converter.jsonToPlayerList(jsonPlayerList: defaults.string(forKey: "test") ?? ""){
            return newList
         }
         return [Player]()
@@ -72,14 +80,26 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
           return cell!
       }
     
-    func savePlayerToStorage(){
-        
+    func clearStroateTestingOnly(){
+        let domain = Bundle.main.bundleIdentifier!
+               UserDefaults.standard.removePersistentDomain(forName: domain)
+               UserDefaults.standard.synchronize()
+               
     }
     
-    func readPlayerFromStorage() {
+    func addMarkerToMap(playerList: [Player]){
+        var annontation : MKPointAnnotation!
+        for player in playerList {
+            annontation = MKPointAnnotation()
+            annontation.coordinate = CLLocationCoordinate2D(latitude: player.location.lat, longitude: player.location.lng)
+            annontation.title = player.name
+            toten_MAP_mapView.addAnnotation(annontation)
+        }
         
+        let region = MKCoordinateRegion(center: annontation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
+        toten_MAP_mapView.setRegion(region, animated: true)
     }
-      
+  
 }
 class CustomEntryCell: UITableViewCell {
     @IBOutlet weak var topten_LBL_playername: UILabel!

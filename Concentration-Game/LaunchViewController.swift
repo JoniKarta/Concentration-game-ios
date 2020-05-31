@@ -7,13 +7,22 @@
 //
 
 import UIKit
+import CoreLocation
 
-class LaunchViewController: UIViewController {
+class LaunchViewController: UIViewController  {
 
     @IBOutlet weak var launch_TVIEW_name: UITextField!
+    var locationManager: CLLocationManager!
+    var userLocation : Location?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        locationManager = CLLocationManager()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.requestLocation()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -22,6 +31,7 @@ class LaunchViewController: UIViewController {
             let destinationController = segue.destination as! ViewController
             destinationController.player.name = launch_TVIEW_name.text!
             destinationController.player.datePlayed = dateFormatter()
+            destinationController.player.location = userLocation ?? Location()
         }
     }
     
@@ -39,3 +49,16 @@ class LaunchViewController: UIViewController {
     
 }
 
+extension LaunchViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            userLocation = Location(lat: location.coordinate.latitude,lng: location.coordinate.longitude)
+            
+        }
+        print("got location")
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("\(error)")
+    }
+}
