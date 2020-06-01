@@ -30,9 +30,11 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedGameMode == "Easy"{
+            // Gives us 4x4 matrix of cards
             configureCardsLayout(offset: 40,cardsPerRow: 4)
             cards = gameModel.createCards(numberOfPairCards: 8)
         }else if selectedGameMode == "Hard"{
+            // Gives us 4x5 matrix of cards
             configureCardsLayout(offset: 50,cardsPerRow: 5)
             cards = gameModel.createCards(numberOfPairCards: 10)
         }
@@ -112,8 +114,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardOneCellView.remove()
             cardTwoCellView.remove()
             // FOR TESTING ONLY
-             player.score =  milliseconds / 1000
-            self.performSegue(withIdentifier: "segue_game_scores", sender: self)
+//             player.score =  milliseconds / 1000
+//            self.performSegue(withIdentifier: "segue_game_scores", sender: self)
         }else{
             cardOne.isFlipped = false
             cardTwo.isFlipped = false

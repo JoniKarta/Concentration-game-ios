@@ -25,10 +25,8 @@ class TopTenViewController: UIViewController{
         
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
-       // clearStroateTestingOnly()
+        // clearStroateTestingOnly()
         if(viewActionContext == "launch"){
-            // Which means we got here from the  LauncherViewController
-           // createPlayers()
             self.playerScores = readFromLocalStorage()
         }else{
             updateTableView(newPlayer: self.currentPlayerPlayed)
@@ -51,12 +49,7 @@ class TopTenViewController: UIViewController{
         return [Player]()
     }
     
-    func clearStroateTestingOnly(){
-        let domain = Bundle.main.bundleIdentifier!
-        UserDefaults.standard.removePersistentDomain(forName: domain)
-        UserDefaults.standard.synchronize()
-        
-    }
+    
     // MARK: - MANGE TABLE VIEW
     func updateTableView(newPlayer: Player){
         var playerListFromStorage = readFromLocalStorage()
@@ -109,14 +102,20 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
         let region = MKCoordinateRegion(center: zoomIn, latitudinalMeters: 800, longitudinalMeters: 800)
         topten_MAP_mapView.setRegion(region, animated: true)    }
     // MARK: - TESTING
-    func createPlayers(){
+    func createPlayersTestingOnly(){
         self.playerScores.append(Player(playerName: "Jonathan", playerScore: 2.05,playerPlayDate: "Some date",location: Location(lat: 32.120998,lng: 34.85779)))
         self.playerScores.append(Player(playerName: "Roni", playerScore: 4.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85779)))
         self.playerScores.append(Player(playerName: "Dana", playerScore: 1.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85479)))
         self.playerScores.append(Player(playerName: "Gal", playerScore: 6.05,playerPlayDate: "Some date",location: Location(lat: 32.120300,lng: 34.85679)))
         
     }
-}
+    
+    func clearStroateTestingOnly(){
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        
+    }}
 
 
 

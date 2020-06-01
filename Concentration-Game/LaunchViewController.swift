@@ -14,6 +14,7 @@ class LaunchViewController: UIViewController  {
     
     @IBOutlet weak var launch_TVIEW_name: UITextField!
     var locationManager: CLLocationManager!
+    var converter : ConverterService = ConverterService()
     var userLocation : Location?
     var gameMode: String = "Easy"
     
@@ -31,13 +32,10 @@ class LaunchViewController: UIViewController  {
         if sender.selectedSegmentIndex == 0{
             // easy mode
             gameMode = "Easy"
-            print("Easy mode pressed")
         }
         else if sender.selectedSegmentIndex == 1{
             // hard mode
             gameMode = "Hard"
-            print("Hard mode pressed")
-
         }
     }
     
@@ -46,26 +44,16 @@ class LaunchViewController: UIViewController  {
         if segue.identifier == "play_segue"{
             let destinationController = segue.destination as! ViewController
             destinationController.player.name = launch_TVIEW_name.text!
-            destinationController.player.datePlayed = dateFormatter()
-            destinationController.player.location = userLocation ?? Location()
+            destinationController.player.datePlayed = converter.dateFormatter(date: Date())
+            destinationController.player.location = userLocation ?? Location() // get the last known loc
             destinationController.selectedGameMode = gameMode
         }
         else if segue.identifier == "scores_segue" {
             let destinationController = segue.destination as! TopTenViewController
+            // Give indication to launchViewController to activate the view without handling new player
             destinationController.viewActionContext = "launch"
         }
     }
-    
-    func dateFormatter() -> String {
-        let currentDate = Date()
-        let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.dateStyle = .long
-        return formatter.string(from: currentDate)
-        
-    }
-    
-    
 }
 
 extension LaunchViewController: CLLocationManagerDelegate {
@@ -73,10 +61,10 @@ extension LaunchViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             userLocation = Location(lat: location.coordinate.latitude,lng: location.coordinate.longitude)
-            
+            print("Got the location")
         }
-        print("got location")
     }
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("\(error)")
     }

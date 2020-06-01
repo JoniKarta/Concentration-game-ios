@@ -21,12 +21,20 @@ class ConverterService {
     func jsonToPlayerList(jsonPlayerList: String) -> [Player]? {
         let decoder = JSONDecoder()
         if jsonPlayerList == "" {
-           return [Player]()
+            return [Player]()
         }else{
             let data: [Player]
             let convertedData: Data = jsonPlayerList.data(using: .utf8)!
             data = try! decoder.decode([Player].self,from: convertedData)
             return data
         }
+    }
+    func dateFormatter(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .long
+        return formatter.string(from: date)
+        
+    }
 }
-}
+
