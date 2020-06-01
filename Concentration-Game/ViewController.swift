@@ -24,13 +24,19 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     private var gameTimer : Timer?
     private var milliseconds : Float = 0 * 1000
     var player: Player = Player()
-    
+    var selectedGameMode: String = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureCardsLayout()
+        if selectedGameMode == "Easy"{
+            configureCardsLayout(offset: 40,cardsPerRow: 4)
+            cards = gameModel.createCards(numberOfPairCards: 8)
+        }else if selectedGameMode == "Hard"{
+            configureCardsLayout(offset: 50,cardsPerRow: 5)
+            cards = gameModel.createCards(numberOfPairCards: 10)
+        }
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
-        cards = gameModel.createCards()
+        
         gameTimer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     // MARK: - UICollectionView Protocol Methods
@@ -81,8 +87,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         }
     }
     // MARK: - Configuaration of main layout
-    func configureCardsLayout() {
-        let width = (view.frame.size.width - 50) / 5
+    func configureCardsLayout(offset: CGFloat, cardsPerRow: CGFloat) {
+        let width = (view.frame.size.width - offset) / cardsPerRow
         let layout = game_COLVIEW_cardsCollection.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
     }

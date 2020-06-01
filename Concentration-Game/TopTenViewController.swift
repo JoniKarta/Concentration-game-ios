@@ -106,7 +106,7 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
     
     func zoomIn(winner: Player){
         let zoomIn = CLLocationCoordinate2D(latitude: winner.location.lat , longitude:winner.location.lng  )
-        let region = MKCoordinateRegion(center: zoomIn, latitudinalMeters: 500, longitudinalMeters: 500)
+        let region = MKCoordinateRegion(center: zoomIn, latitudinalMeters: 800, longitudinalMeters: 800)
         topten_MAP_mapView.setRegion(region, animated: true)    }
     // MARK: - TESTING
     func createPlayers(){

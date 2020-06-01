@@ -15,6 +15,7 @@ class LaunchViewController: UIViewController  {
     @IBOutlet weak var launch_TVIEW_name: UITextField!
     var locationManager: CLLocationManager!
     var userLocation : Location?
+    var gameMode: String = "Easy"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,20 @@ class LaunchViewController: UIViewController  {
         
     }
     
+    @IBAction func launch_SEG_mode(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0{
+            // easy mode
+            gameMode = "Easy"
+            print("Easy mode pressed")
+        }
+        else if sender.selectedSegmentIndex == 1{
+            // hard mode
+            gameMode = "Hard"
+            print("Hard mode pressed")
+
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "play_segue"{
@@ -33,6 +48,7 @@ class LaunchViewController: UIViewController  {
             destinationController.player.name = launch_TVIEW_name.text!
             destinationController.player.datePlayed = dateFormatter()
             destinationController.player.location = userLocation ?? Location()
+            destinationController.selectedGameMode = gameMode
         }
         else if segue.identifier == "scores_segue" {
             let destinationController = segue.destination as! TopTenViewController
