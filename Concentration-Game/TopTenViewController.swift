@@ -25,7 +25,7 @@ class TopTenViewController: UIViewController{
         
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
-        // clearStroateTestingOnly()
+        //clearStroateTestingOnly()
         if(viewActionContext == "launch"){
             self.playerScores = readFromLocalStorage()
         }else{
@@ -75,7 +75,7 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell : CustomEntryCell? = self.topten_LST_scores.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as? CustomEntryCell
         cell?.topten_LBL_playername?.text = self.playerScores[indexPath.row].name
-        cell?.topten_LBL_playertime?.text = String(self.playerScores[indexPath.row].score)
+        cell?.topten_LBL_playertime?.text = String(format:"%02i:%02i", self.playerScores[indexPath.row].score/60,self.playerScores[indexPath.row].score % 60)
         cell?.topten_LBL_playerdate?.text = self.playerScores[indexPath.row].datePlayed
         if(cell == nil){
             cell = CustomEntryCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: cellReuseIdentifier)
@@ -102,13 +102,14 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
         let region = MKCoordinateRegion(center: zoomIn, latitudinalMeters: 800, longitudinalMeters: 800)
         topten_MAP_mapView.setRegion(region, animated: true)    }
     // MARK: - TESTING
-    func createPlayersTestingOnly(){
-        self.playerScores.append(Player(playerName: "Jonathan", playerScore: 2.05,playerPlayDate: "Some date",location: Location(lat: 32.120998,lng: 34.85779)))
-        self.playerScores.append(Player(playerName: "Roni", playerScore: 4.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85779)))
-        self.playerScores.append(Player(playerName: "Dana", playerScore: 1.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85479)))
-        self.playerScores.append(Player(playerName: "Gal", playerScore: 6.05,playerPlayDate: "Some date",location: Location(lat: 32.120300,lng: 34.85679)))
-        
-    }
+//    func createPlayersTestingOnly(){
+//        self.playerScores.append(Player(playerName: "Jonathan", playerScore: 2.05,playerPlayDate: "Some date",location: Location(lat: 32.120998,lng: 34.85779)))
+//        self.playerScores.append(Player(playerName: "Roni", playerScore: 4.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85779)))
+//        self.playerScores.append(Player(playerName: "Dana", playerScore: 1.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85479)))
+//        self.playerScores.append(Player(playerName: "Gal", playerScore: 6.05,playerPlayDate: "Some         self.game_LBL_timer.text = String(format:"%02i:%02i", minutes, seconds)
+//date",location: Location(lat: 32.120300,lng: 34.85679)))
+//        
+//    }
     
     func clearStroateTestingOnly(){
         let domain = Bundle.main.bundleIdentifier!

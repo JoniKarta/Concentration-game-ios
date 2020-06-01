@@ -22,8 +22,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     private var firstCardFlipped : IndexPath?
     private var secondCardFlipped : IndexPath?
     private var gameTimer : Timer?
-    private var milliseconds : Float = 0 * 1000
-    
+    private var seconds: Int = 0
+    private var minutes: Int = 0
     var player: Player = Player()
     var selectedGameMode: String = ""
     
@@ -41,7 +41,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
         game_COLVIEW_cardsCollection.delegate = self
         game_COLVIEW_cardsCollection.dataSource = self
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     // MARK: - UICollectionView Protocol Methods
     
@@ -76,7 +76,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             hasMatch(firstCardIndex: self.firstCardFlipped!, secondCardIndex: self.secondCardFlipped!)
             if gameModel.checkGameBoard() == true{
                 gameTimer?.invalidate()
-                player.score = milliseconds / 1000
+                player.score = (seconds + minutes * 60)
                 self.performSegue(withIdentifier: "segue_game_scores", sender: self)
 
             }
@@ -114,8 +114,8 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardOneCellView.remove()
             cardTwoCellView.remove()
             // FOR TESTING ONLY
-//             player.score =  milliseconds / 1000
-//            self.performSegue(withIdentifier: "segue_game_scores", sender: self)
+            player.score = (seconds + minutes * 60)
+           self.performSegue(withIdentifier: "segue_game_scores", sender: self)
         }else{
             cardOne.isFlipped = false
             cardTwo.isFlipped = false
@@ -132,10 +132,16 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     
     
     // MARK: - Timer methods
+    
     @objc func updateTimer(){
-        milliseconds += 1
-        let seconds = String(format : "%.2f", milliseconds / 1000)
-        self.game_LBL_timer.text = "Time Passed: \(seconds)"
+        seconds+=1
+        if seconds > 59{
+            minutes += 1
+            seconds = 0
+        }
+        
+        self.game_LBL_timer.text = "Time Passed \(String(format:"%02i:%02i", minutes, seconds))"
+        
     }
     func viewAlertDialog(customMessage : String){
         let alert = UIAlertController(title: "Game Over", message: customMessage, preferredStyle: .alert)

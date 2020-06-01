@@ -10,7 +10,7 @@ import Foundation
 
 class Player : Codable, CustomStringConvertible{
     var name: String = ""
-    var score : Float = 0
+    var score : Int = 0
     var datePlayed: String = ""
     var location: Location = Location()
     
@@ -18,7 +18,7 @@ class Player : Codable, CustomStringConvertible{
         
     }
     
-    init(playerName: String, playerScore: Float, playerPlayDate: String, location: Location){
+    init(playerName: String, playerScore: Int, playerPlayDate: String, location: Location){
         self.name = playerName
         self.score = playerScore
         self.datePlayed = playerPlayDate
