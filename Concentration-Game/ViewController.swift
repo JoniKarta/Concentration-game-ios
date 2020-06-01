@@ -23,8 +23,10 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     private var secondCardFlipped : IndexPath?
     private var gameTimer : Timer?
     private var milliseconds : Float = 0 * 1000
+    
     var player: Player = Player()
     var selectedGameMode: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if selectedGameMode == "Easy"{

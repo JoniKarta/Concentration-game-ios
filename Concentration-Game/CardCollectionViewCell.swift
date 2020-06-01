@@ -35,7 +35,6 @@ class CardCollectionViewCell: UICollectionViewCell {
                               duration: 0.3,
                               options: [.transitionFlipFromRight,.showHideTransitionViews],
                               completion: nil)
-            
         }
     }
     
