@@ -18,10 +18,11 @@ class Player : Codable, CustomStringConvertible{
         
     }
     
-    init(playerName: String, playerScore: Float, playerPlayDate: String){
+    init(playerName: String, playerScore: Float, playerPlayDate: String, location: Location){
         self.name = playerName
         self.score = playerScore
         self.datePlayed = playerPlayDate
+        self.location = location
     }
     
     public var description: String {

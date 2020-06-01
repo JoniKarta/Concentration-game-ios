@@ -11,10 +11,11 @@ import CoreLocation
 
 
 class LaunchViewController: UIViewController  {
-
+    
     @IBOutlet weak var launch_TVIEW_name: UITextField!
     var locationManager: CLLocationManager!
     var userLocation : Location?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +23,6 @@ class LaunchViewController: UIViewController  {
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         locationManager.requestLocation()
-        
         
     }
     
@@ -33,19 +33,18 @@ class LaunchViewController: UIViewController  {
             destinationController.player.name = launch_TVIEW_name.text!
             destinationController.player.datePlayed = dateFormatter()
             destinationController.player.location = userLocation ?? Location()
-        }else if segue.identifier == "scores_segue" {
+        }
+        else if segue.identifier == "scores_segue" {
             let destinationController = segue.destination as! TopTenViewController
-            destinationController.viewActionContext = "launchFromGamePlay"
+            destinationController.viewActionContext = "launch"
         }
     }
     
-    // TODO CHANGE THE LOCATION OF THIS FUNCTION TO THE CORRECT PLACE
     func dateFormatter() -> String {
         let currentDate = Date()
         let formatter = DateFormatter()
         formatter.timeStyle = .medium
         formatter.dateStyle = .long
-        
         return formatter.string(from: currentDate)
         
     }

@@ -82,7 +82,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
     }
     // MARK: - Configuaration of main layout
     func configureCardsLayout() {
-        let width = (view.frame.size.width - 40) / 4
+        let width = (view.frame.size.width - 50) / 5
         let layout = game_COLVIEW_cardsCollection.collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: width, height: width)
     }

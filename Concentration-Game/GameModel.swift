@@ -11,7 +11,7 @@ import Foundation
 
 class GameModel {
     private var cardsArray = [Card]()
-    private var numberOfPairCards : Int = 8
+    private var numberOfPairCards : Int = 10
     
     // This function generates random and unique pairs of cards
     func createCards() -> [Card]{

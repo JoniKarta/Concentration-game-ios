@@ -25,8 +25,10 @@ class TopTenViewController: UIViewController{
         
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
-        
-        if(viewActionContext == "launchFromGamePlay"){ // Which means we get
+       // clearStroateTestingOnly()
+        if(viewActionContext == "launch"){
+            // Which means we got here from the  LauncherViewController
+           // createPlayers()
             self.playerScores = readFromLocalStorage()
         }else{
             updateTableView(newPlayer: self.currentPlayerPlayed)
@@ -92,22 +94,33 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
     // MARK: - MANAGE MAP
     func setMarkerOnMap(playerList: [Player]){
         if(!playerList.isEmpty){
-            var annontation : MKPointAnnotation!
-            
             for player in playerList {
-                annontation = MKPointAnnotation()
-                annontation.coordinate = CLLocationCoordinate2D(latitude: player.location.lat, longitude: player.location.lng)
+                let annontation = MKPointAnnotation()
                 annontation.title = player.name
+                annontation.coordinate = CLLocationCoordinate2D(latitude: player.location.lat , longitude: player.location.lng )
                 topten_MAP_mapView.addAnnotation(annontation)
             }
-            
-            let region = MKCoordinateRegion(center: annontation.coordinate, latitudinalMeters: 500, longitudinalMeters: 500)
-            topten_MAP_mapView.setRegion(region, animated: true)        }
-        
-        
+            zoomIn(winner: playerList.first!)
+        }
     }
     
+    func zoomIn(winner: Player){
+        let zoomIn = CLLocationCoordinate2D(latitude: winner.location.lat , longitude:winner.location.lng  )
+        let region = MKCoordinateRegion(center: zoomIn, latitudinalMeters: 500, longitudinalMeters: 500)
+        topten_MAP_mapView.setRegion(region, animated: true)    }
+    // MARK: - TESTING
+    func createPlayers(){
+        self.playerScores.append(Player(playerName: "Jonathan", playerScore: 2.05,playerPlayDate: "Some date",location: Location(lat: 32.120998,lng: 34.85779)))
+        self.playerScores.append(Player(playerName: "Roni", playerScore: 4.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85779)))
+        self.playerScores.append(Player(playerName: "Dana", playerScore: 1.05,playerPlayDate: "Some date",location: Location(lat: 32.120400,lng: 34.85479)))
+        self.playerScores.append(Player(playerName: "Gal", playerScore: 6.05,playerPlayDate: "Some date",location: Location(lat: 32.120300,lng: 34.85679)))
+        
+    }
 }
+
+
+
+
 class CustomEntryCell: UITableViewCell {
     @IBOutlet weak var topten_LBL_playername: UILabel!
     @IBOutlet weak var topten_LBL_playertime: UILabel!
@@ -115,5 +128,5 @@ class CustomEntryCell: UITableViewCell {
 }
 
 
-    
+
 
