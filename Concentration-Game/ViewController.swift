@@ -78,7 +78,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
                 gameTimer?.invalidate()
                 player.score = (seconds + minutes * 60)
                 self.performSegue(withIdentifier: "segue_game_scores", sender: self)
-
+                
             }
             
         }
@@ -115,7 +115,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardTwoCellView.remove()
             // FOR TESTING ONLY
             player.score = (seconds + minutes * 60)
-           self.performSegue(withIdentifier: "segue_game_scores", sender: self)
+            self.performSegue(withIdentifier: "segue_game_scores", sender: self)
         }else{
             cardOne.isFlipped = false
             cardTwo.isFlipped = false

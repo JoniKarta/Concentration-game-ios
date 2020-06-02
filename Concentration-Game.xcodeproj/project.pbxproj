@@ -118,18 +118,18 @@
 				C0F2549C2482EE1A005C4D11 /* LaunchViewController.swift */,
 				C042ECF624613ECE0041EB88 /* ViewController.swift */,
 				C0B9EFCB2482816900BF28C7 /* TopTenViewController.swift */,
-				C0B9EFCD2482A4E100BF28C7 /* Player.swift */,
-				C042ECF224613ECE0041EB88 /* AppDelegate.swift */,
-				C042ECF424613ECE0041EB88 /* SceneDelegate.swift */,
-				C042ED28246160670041EB88 /* CardCollectionViewCell.swift */,
 				C042ED22246153AD0041EB88 /* GameModel.swift */,
 				C042ED24246154D00041EB88 /* Card.swift */,
+				C07D6CC92483B77000F7BBA7 /* Location.swift */,
+				C0B9EFCD2482A4E100BF28C7 /* Player.swift */,
+				C042ED28246160670041EB88 /* CardCollectionViewCell.swift */,
 				C07D6CC72483830200F7BBA7 /* Converter.swift */,
+				C042ECF424613ECE0041EB88 /* SceneDelegate.swift */,
+				C042ECF224613ECE0041EB88 /* AppDelegate.swift */,
 				C042ECF824613ECE0041EB88 /* Main.storyboard */,
 				C042ECFB24613ED00041EB88 /* Assets.xcassets */,
 				C042ECFD24613ED00041EB88 /* LaunchScreen.storyboard */,
 				C042ED0024613ED00041EB88 /* Info.plist */,
-				C07D6CC92483B77000F7BBA7 /* Location.swift */,
 			);
 			path = "Concentration-Game";
 			sourceTree = "<group>";

@@ -30,11 +30,9 @@ class LaunchViewController: UIViewController  {
     
     @IBAction func launch_SEG_mode(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
-            // easy mode
             gameMode = "Easy"
         }
         else if sender.selectedSegmentIndex == 1{
-            // hard mode
             gameMode = "Hard"
         }
     }
@@ -64,7 +62,7 @@ extension LaunchViewController: CLLocationManagerDelegate {
             print("Got the location")
         }
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("\(error)")
     }
