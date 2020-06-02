@@ -27,7 +27,7 @@ In this project i implemented MVC architectural pattern to decouple the the logi
       <img src="Logo/Game%20Easy%20Mode.png" alt="flip game image" >
       <img src="Logo/Game%20Hard%20Mode.png" alt="flip game image" >
       <img src="Logo/Game%20Top%20Ten%20Score.png" alt="flip game image" >
-      <img src="Logo/Game%Top%20Ten%20Landscape%20Mode.png" alt="flip game image" >
+      <img src="Logo/GameTop%20Ten%20Landscape%20Mode.png" alt="flip game image" >
 </div>
 
 
