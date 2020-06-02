@@ -23,8 +23,11 @@ In this project i implemented MVC architectural pattern to decouple the the logi
       Manage the interaction of the user with the collection view and the model.
       
 <div>
-      <img src="Logo/Game.jpeg" alt="Game image" >
-      <img src="Logo/Game1.jpeg" alt="flip game image" >
+      <img src="Logo/Game%20Main%20Screen.png" alt="flip game image" >
+      <img src="Logo/Game%20Easy%20Mode.png" alt="flip game image" >
+      <img src="Logo/Game%20Hard%20Mode.png" alt="flip game image" >
+      <img src="Logo/Game%20Top%20Ten%20Score.png" alt="flip game image" >
+      <img src="Logo/Game%Top%20Ten%20Landscape%20Mode.png" alt="flip game image" >
 </div>
 
 
