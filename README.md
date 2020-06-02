@@ -5,7 +5,12 @@
 # Concentration Game
 
 ## About The Project
-This is the first project in IOS course, which is part of my academic stuides.
+This is the Second project in IOS course, which is part of my academic stuides.
+
+## Improvments
+1. Added Main screen which the user can select between easy and hard mode.
+2. Added Top Ten screen which the user can view top 10 player.
+3. Added user location and map view to display top 10 player their locations.
 
 ## Design principle 
 In this project i implemented MVC architectural pattern to decouple the the logic from the view.
