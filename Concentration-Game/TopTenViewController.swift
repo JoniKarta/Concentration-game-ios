@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class TopTenViewController: UIViewController{
+   
     
     @IBOutlet weak var topten_LST_scores: UITableView!
     @IBOutlet weak var topten_MAP_mapView: MKMapView!
@@ -20,13 +21,13 @@ class TopTenViewController: UIViewController{
     var converter: ConverterService = ConverterService()
     var viewActionContext: String = ""
     var place: Int = 0
+    var isNewPlayerInserted : Bool = false
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         topten_LST_scores.delegate = self
         topten_LST_scores.dataSource = self
-        //clearStroateTestingOnly()
-        if(viewActionContext == "launch"){
+        if(viewActionContext == "display_score"){
             self.playerScores = readFromLocalStorage()
         }else{
             updateTableView(newPlayer: self.currentPlayerPlayed)
@@ -50,23 +51,27 @@ class TopTenViewController: UIViewController{
     }
     
     
-    // MARK: - MANGE TABLE VIEW
+    // MARK: - MANAGE TABLE VIEW
     func updateTableView(newPlayer: Player){
         var playerListFromStorage = readFromLocalStorage()
         if playerListFromStorage.count < 10 {
+            isNewPlayerInserted = true
             playerListFromStorage.append(newPlayer)
             writeToLocalStorage(playersList: playerListFromStorage.sorted(by: {$0.score < $1.score}))
         }else if(playerListFromStorage.last!.score > newPlayer.score){
+            isNewPlayerInserted = true
             playerListFromStorage.remove(at: playerListFromStorage.count - 1)
             playerListFromStorage.append(newPlayer)
             writeToLocalStorage(playersList: playerListFromStorage.sorted(by: {$0.score < $1.score}))
         }
+        
         self.playerScores = readFromLocalStorage()
+        
         
     }
 }
 
-// MARK: - PROTOCOL FOR MANGE TABLE-VIEW
+// MARK: - PROTOCOL FOR MANAGE TABLE-VIEW
 extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return playerScores.count
@@ -93,12 +98,17 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
                 annontation.coordinate = CLLocationCoordinate2D(latitude: player.location.lat , longitude: player.location.lng )
                 topten_MAP_mapView.addAnnotation(annontation)
             }
-            zoomIn(winner: playerList.first!)
+            if isNewPlayerInserted == true {
+                zoomIn(player: currentPlayerPlayed)
+            }
+            else {
+                zoomIn(player: playerList.first!)
+            }
         }
     }
     
-    func zoomIn(winner: Player){
-        let zoomIn = CLLocationCoordinate2D(latitude: winner.location.lat , longitude:winner.location.lng  )
+    func zoomIn(player: Player){
+        let zoomIn = CLLocationCoordinate2D(latitude: player.location.lat , longitude:player.location.lng  )
         let region = MKCoordinateRegion(center: zoomIn, latitudinalMeters: 800, longitudinalMeters: 800)
         topten_MAP_mapView.setRegion(region, animated: true)    }
     // MARK: - TESTING
@@ -108,10 +118,17 @@ extension TopTenViewController :UITableViewDataSource, UITableViewDelegate {
         UserDefaults.standard.removePersistentDomain(forName: domain)
         UserDefaults.standard.synchronize()
         
-    }}
+    }
 
-
-
+    func testUserLocations() {
+        self.playerScores = readFromLocalStorage()
+        self.playerScores.append(Player(playerName: "Jonathan",playerScore: 80, playerPlayDate: converter.dateFormatter(date: Date()), location: Location(lat: 32.120998,lng:34.805779)))
+        self.playerScores.append(Player(playerName: "David",playerScore: 122, playerPlayDate: converter.dateFormatter(date: Date()), location: Location(lat: 32.119247,lng:34.808403)))
+        self.playerScores.append(Player(playerName: "Roni",playerScore: 210, playerPlayDate: converter.dateFormatter(date: Date()), location: Location(lat: 32.119247,lng:34.804109)))
+       self.playerScores.append(Player(playerName: "Sarit",playerScore: 95, playerPlayDate: converter.dateFormatter(date: Date()), location: Location(lat: 32.118892,lng:34.805779)))
+        writeToLocalStorage(playersList: self.playerScores.sorted(by: {$0.score < $1.score}))
+    }
+}
 
 class CustomEntryCell: UITableViewCell {
     @IBOutlet weak var topten_LBL_playername: UILabel!

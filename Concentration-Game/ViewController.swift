@@ -10,8 +10,11 @@ import UIKit
 
 
 class ViewController: UIViewController,UICollectionViewDataSource, UICollectionViewDelegate
-    
-{
+    {
+    func getUserLocation(location: Location) {
+        player.location = location
+    }
+       
     @IBOutlet weak var game_LBL_moves: UILabel!
     @IBOutlet weak var game_COLVIEW_cardsCollection: UICollectionView!
     @IBOutlet weak var game_LBL_timer: UILabel!
