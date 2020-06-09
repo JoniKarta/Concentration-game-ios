@@ -116,9 +116,7 @@ class ViewController: UIViewController,UICollectionViewDataSource, UICollectionV
             cardTwo.isMatched = true
             cardOneCellView.remove()
             cardTwoCellView.remove()
-            // FOR TESTING ONLY
-            player.score = (seconds + minutes * 60)
-            self.performSegue(withIdentifier: "segue_game_scores", sender: self)
+           
         }else{
             cardOne.isFlipped = false
             cardTwo.isFlipped = false
